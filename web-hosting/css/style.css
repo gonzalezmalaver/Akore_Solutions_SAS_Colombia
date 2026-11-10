@@ -739,6 +739,55 @@ header a.logo img {
     width: 100%;
 }
 
+/* ===== Services slider (banner) ===== */
+.services-slider { position: relative; }
+
+.services-viewport {
+  overflow: hidden;
+  touch-action: pan-y;      /* permite scroll vertical de la página en móvil */
+  cursor: grab;
+}
+.services-viewport.is-dragging { cursor: grabbing; }
+
+.services-track {
+  display: flex;
+  will-change: transform;
+  user-select: none;
+}
+
+.service-slide {
+  flex: 0 0 33.333%;        /* 3 visibles en escritorio */
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (max-width: 991px) { .service-slide { flex-basis: 50%; } }  /* tablet */
+@media (max-width: 575px) { .service-slide { flex-basis: 85%; } }  /* móvil */
+
+/* Flechas */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #002450;
+  font-size: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.35);
+  cursor: pointer;
+}
+.slider-btn.prev { left: -22px; }
+.slider-btn.next { right: -22px; }
+
+@media (max-width: 1199px) {
+  .slider-btn.prev { left: 4px; }
+  .slider-btn.next { right: 4px; }
+}
+
 /* ===================================
       About Section
 ====================================== */
@@ -2357,6 +2406,10 @@ header a.logo img {
   padding-top: inherit;
 }
 
+#services-v2 .row > [class*="col-"] {
+  margin-bottom: 20px; /* ajusta el espacio a tu gusto */
+}
+
 #coverage-v2{
   position:relative;
   padding:90px 0;
@@ -2838,4 +2891,15 @@ header a.logo img {
   .mvv-section{ padding: 55px 0 30px; }
   .mvv-value{ padding: 12px 8px; }
   .mvv-icon{ width: 56px; height: 56px; font-size: 28px; }
+}
+
+/* Subir la franja de servicios (solo escritorio) */
+@media (min-width: 1201px) {
+  .author-skills {
+    bottom: 40px;          /* súbela más o menos: 20px, 40px, 60px... */
+  }
+  .author-skills .about-media {
+    padding-top: 25px;     /* compacta la tarjeta para que no crezca tanto */
+    padding-bottom: 30px;  /* el original tenía 50px */
+  }
 }
